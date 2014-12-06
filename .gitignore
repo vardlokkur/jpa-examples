@@ -1,3 +1,5 @@
 .idea
 *.iml
 constructor-di/target
+querydsl-iterate/src/generated-sources
+querydsl-iterate/target
