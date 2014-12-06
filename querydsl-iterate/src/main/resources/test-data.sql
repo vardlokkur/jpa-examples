@@ -1,0 +1,8 @@
+--
+-- Define Employees
+--
+INSERT INTO EMPLOYEE(ID, NAME, EMPLOYED_ON)
+VALUES
+  (UUID(), 'Erasmus Estes', DATE_SUB(CURDATE(), INTERVAL 5 YEAR)),
+  (UUID(), 'Karyn Baxter', DATE_SUB(CURDATE(), INTERVAL 4 YEAR)),
+  (UUID(), 'Byron Cortez', DATE_SUB(CURDATE(), INTERVAL 25 MONTH));
