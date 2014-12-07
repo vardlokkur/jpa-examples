@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 /**
  * Employee.
@@ -50,6 +51,14 @@ public class Employee {
     @Nonnull
     public String getName() {
         return name;
+    }
+
+    /**
+     * @param feature the predicate to be matched by employees having some feature
+     * @return {@code true} if this employee has given {@code feature}, {@code false} otherwise
+     */
+    public boolean has(@Nonnull final Predicate<Employee> feature) {
+        return feature.test(this);
     }
 
 }
