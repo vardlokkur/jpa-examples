@@ -3,6 +3,7 @@ package com.blogspot.vardlokkur.domain.model.internal;
 import com.blogspot.vardlokkur.domain.EntityIterator;
 import com.blogspot.vardlokkur.domain.model.Employee;
 import com.mysema.commons.lang.CloseableIterator;
+import com.mysema.query.Projectable;
 import com.mysema.query.jpa.JPQLTemplates;
 import com.mysema.query.jpa.impl.JPAQuery;
 import org.springframework.stereotype.Repository;
@@ -55,11 +56,22 @@ class EmployeeRepositoryPrecursor implements EntityIterator<Employee> {
 
     /**
      * {@inheritDoc}
+     *
+     * <p>Note that there are JPA providers requiring this method to be transactional (like some Hibernate versions).
+     * Using {@link CloseableIterator} outside of the transactional context may cause database connection leak,
+     * and quickly make your application unusable.
+     * </p>
      */
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public void forEach(final Consumer<? super Employee> action) {
-        try (final CloseableIterator<Employee> iterator = new JPAQuery(entityManager, jpqlTemplates).from(employee)
-                                                                                                    .iterate(employee)) {
+
+        // Create JPQL query fetching all employees, ...
+        final Projectable query = new JPAQuery(entityManager, jpqlTemplates).from(employee);
+
+        // ... iterate over all employees determined by the above query, ...
+        try (final CloseableIterator<Employee> iterator = query.iterate(employee)) {
+
+            // ... and for each employee perform action provided by the caller.
             iterator.forEachRemaining(action);
         }
     }
