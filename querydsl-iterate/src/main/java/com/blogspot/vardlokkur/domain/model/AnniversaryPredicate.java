@@ -1,6 +1,7 @@
 package com.blogspot.vardlokkur.domain.model;
 
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 import java.time.Period;
 import java.util.function.Predicate;
 
@@ -10,7 +11,24 @@ import java.util.function.Predicate;
  * @author Warlock, AIS.PL
  * @since 1.0
  */
-public class AnniversaryPredicate implements Predicate<Employee> {
+@Immutable
+final class AnniversaryPredicate implements Predicate<Employee> {
+
+    private static final AnniversaryPredicate INSTANCE = new AnniversaryPredicate();
+
+    /**
+     * Constructs new instance.
+     */
+    private AnniversaryPredicate() {
+        super();
+    }
+
+    /**
+     * @return predicate matched by employees having work anniversary
+     */
+    public static Predicate<Employee> workAnniversary() {
+        return AnniversaryPredicate.INSTANCE;
+    }
 
     /**
      * {@inheritDoc}
