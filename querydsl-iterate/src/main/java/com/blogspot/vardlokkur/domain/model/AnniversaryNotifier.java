@@ -6,7 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import java.util.Objects;
-import java.util.function.Predicate;
+
+import static com.blogspot.vardlokkur.domain.model.AnniversaryPredicate.workAnniversary;
 
 /**
  * Task notifying about the employee's work anniversary.
@@ -41,10 +42,10 @@ class AnniversaryNotifier implements Runnable {
     @Override
     @Transactional(readOnly = true)
     public void run() {
-        Predicate<Employee> anniversary = new AnniversaryPredicate();
         employees.forEach(employee -> {
-            if (anniversary.test(employee)) {
-                System.out.println("Amazing! " + employee.getName() + " is working for us " + employee.getEmploymentPeriod().getYears() + " year(s).");
+            if (employee.has(workAnniversary())) {
+                System.out.println(employee.getName() + " is working for us "
+                    + employee.getEmploymentPeriod().getYears() + " year(s).");
             }
         });
     }
