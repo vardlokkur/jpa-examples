@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <persistence-unit name="QUERYDSL-ITERATE-J2SE" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="EXAMPLE-J2SE" transaction-type="RESOURCE_LOCAL">
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
     </persistence-unit>
 
