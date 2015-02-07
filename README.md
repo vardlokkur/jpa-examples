@@ -17,3 +17,10 @@ instead of *Field/Setter Dependency Injection*, when using [Spring Framework](ht
  and provides fast and reliable method of processing large entities sets without loading all the entities into memory.
 
 This example demonstrates also custom implementation of Spring Data JPA based repository methods.
+
+## [QueryDSL delegate methods](querydsl-delegate-methods)
+
+One of the interesting [QueryDSL](http://www.querydsl.com/) features are _Delegate Methods_. Their usage allows adding
+custom predicates to the Q-beans generated automatically by _QueryDSL_.
+
+Before examining the example itself, you may be interested in reading [QueryDSL 3.6.0 - Delegate Methods](http://www.querydsl.com/static/querydsl/3.6.0/reference/html/ch03s03.html#d0e2357).
