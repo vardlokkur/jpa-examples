@@ -9,7 +9,7 @@ You may start with _hasAnniversary_ method of
 [EmployeeSupplement](src/main/java/com/blogspot/vardlokkur/domain/model/EmployeeSupplement.java).
 This method is marked as Delegate Method for Employee Q-bean (using _@QueryDelegate_ annotation).
 When _QueryDSL_ annotation processor will process domain model, following method will be added to Employee Q-bean:
-```
+```java
 public class QEmployee extends EntityPathBase<Employee> {
     ...
     public com.mysema.query.types.Predicate hasAnniversary() {
