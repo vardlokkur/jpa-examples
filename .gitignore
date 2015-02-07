@@ -1,5 +1,8 @@
 .idea
 *.iml
 constructor-di/target
-querydsl-iterate/src/generated-sources
+querydsl-iterate/src/main/generated-sources
 querydsl-iterate/target
+atlassian-ide-plugin.xml
+querydsl-delegate-methods/src/main/generated-sources
+querydsl-delegate-methods/target
