@@ -36,7 +36,7 @@
                             <goal>process</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>src/generated-sources</outputDirectory>
+                            <outputDirectory>src/main/generated-sources</outputDirectory>
                             <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
