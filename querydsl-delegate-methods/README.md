@@ -21,9 +21,18 @@ public class QEmployee extends EntityPathBase<Employee> {
 That will allow you to use _hasAnniversary_ predicate for Employees, as you may see in
 [AnniversaryNotifier](src/main/java/com/blogspot/vardlokkur/domain/model/AnniversaryNotifier.java)
 ```java
-    new JPAQuery(entityManager, jpqlTemplates).from(employee)
-                                              .where(employee.hasAnniversary())
-                                              .iterate(employee.name, employee.dateEmployed)
+import static com.blogspot.vardlokkur.domain.model.QEmployee.employee;
+...
+class AnniversaryNotifier implements Runnable {
+...
+    public void run() {
+       ...
+       new JPAQuery(entityManager, jpqlTemplates).from(employee)
+                                                 .where(employee.hasAnniversary())
+                                                 .iterate(employee.name, employee.dateEmployed)
+       ...
+    }
+}
 ```
 
 
